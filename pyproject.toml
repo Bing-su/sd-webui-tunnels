@@ -1,0 +1,21 @@
+[project]
+name = "sd-webui-tunnels"
+version = "23.2.0"
+description = "tunneling extension for automatic1111 sd-webui"
+authors = [
+    {name = "dowon", email = "ks2515@naver.com"},
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.urls]
+repository = "https://github.com/Bing-su/sd-webui-tunnels"
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+select = ["A", "B", "C4", "E", "F", "I001", "N", "PT", "UP", "W"]
+ignore = ["B008", "B905", "E501"]
+unfixable = ["F401"]
