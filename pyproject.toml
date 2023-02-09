@@ -1,7 +1,7 @@
 [project]
 name = "sd-webui-tunnels"
 version = "23.2.0"
-description = "tunneling extension for automatic1111 sd-webui"
+description = "Tunneling extension for automatic1111 sd-webui"
 authors = [
     {name = "dowon", email = "ks2515@naver.com"},
 ]
@@ -14,6 +14,7 @@ repository = "https://github.com/Bing-su/sd-webui-tunnels"
 
 [tool.isort]
 profile = "black"
+known_first_party = ["modules", "launch"]
 
 [tool.ruff]
 select = ["A", "B", "C4", "E", "F", "I001", "N", "PT", "UP", "W"]
