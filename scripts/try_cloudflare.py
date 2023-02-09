@@ -1,4 +1,4 @@
-from pycloudflare import try_cloudflare
+from pycloudflared import try_cloudflare
 
 from modules.shared import cmd_opts
 
