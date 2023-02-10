@@ -7,11 +7,15 @@ from tempfile import TemporaryDirectory
 
 from modules.shared import cmd_opts
 
-from ._util import gen_key
-
 LOCALHOST_RUN = "localhost.run"
 localhostrun_pattern = re.compile(r"(?P<url>https?://\S+\.lhr\.life)")
 remotemoe_pattern = re.compile(r"(?P<url>https?://\S+\.remote\.moe)")
+
+
+def gen_key(path: str | Path) -> None:
+    arg_string = f'ssh-keygen -t rsa -b 4096 -N "" -f {path}'
+    args = shlex.split(arg_string)
+    subprocess.run(args, check=True)
 
 
 def ssh_tunnel(host: str = LOCALHOST_RUN) -> None:
