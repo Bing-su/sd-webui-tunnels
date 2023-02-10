@@ -13,7 +13,8 @@ remotemoe_pattern = re.compile(r"(?P<url>https?://\S+\.remote\.moe)")
 
 
 def gen_key(path: str | Path) -> None:
-    arg_string = f'ssh-keygen -t rsa -b 4096 -N "" -f {str(path)}'
+    path = Path(path)
+    arg_string = f'ssh-keygen -t rsa -b 4096 -N "" -f {path.as_posix()}'
     args = shlex.split(arg_string)
     subprocess.run(args, check=True)
 
@@ -34,7 +35,7 @@ def ssh_tunnel(host: str = LOCALHOST_RUN) -> None:
 
     port = cmd_opts.port if cmd_opts.port else 7860
     arg_string = (
-        f"ssh -R 80:localhost:{port} -o StrictHostKeyChecking=no -i {str(ssh_path)} {host}"
+        f"ssh -R 80:localhost:{port} -o StrictHostKeyChecking=no -i {ssh_path.as_posix()} {host}"
     )
     args = shlex.split(arg_string)
     tunnel = subprocess.Popen(
