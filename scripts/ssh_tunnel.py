@@ -7,6 +7,7 @@ import subprocess
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+from discord_webhook import send_to_discord
 from modules.shared import cmd_opts
 
 LOCALHOST_RUN = "localhost.run"
@@ -23,7 +24,7 @@ def gen_key(path: str | Path) -> None:
     path.chmod(0o600)
 
 
-def ssh_tunnel(host: str = LOCALHOST_RUN) -> None:
+def ssh_tunnel(host: str = LOCALHOST_RUN) -> str:
     ssh_name = "id_rsa"
     ssh_path = Path(__file__).parent.parent / ssh_name
 
@@ -67,12 +68,19 @@ def ssh_tunnel(host: str = LOCALHOST_RUN) -> None:
         raise RuntimeError(f"Failed to run {host}")
 
     print(f" * Running on {tunnel_url}")
+    return tunnel_url
 
 
 if cmd_opts.localhostrun:
     print("localhost.run detected, trying to connect...")
-    ssh_tunnel(LOCALHOST_RUN)
+    lhr_url = ssh_tunnel(LOCALHOST_RUN)
+
+    if cmd_opts.tunnel_webhook:
+        send_to_discord(lhr_url, cmd_opts.tunnel_webhook)
 
 if cmd_opts.remotemoe:
     print("remote.moe detected, trying to connect...")
-    ssh_tunnel(REMOTE_MOE)
+    moe_url = ssh_tunnel(REMOTE_MOE)
+
+    if cmd_opts.tunnel_webhook:
+        send_to_discord(moe_url, cmd_opts.tunnel_webhook)

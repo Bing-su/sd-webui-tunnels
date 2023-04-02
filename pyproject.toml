@@ -1,6 +1,6 @@
 [project]
 name = "sd-webui-tunnels"
-version = "23.2.1"
+version = "23.4.0"
 description = "Tunneling extension for automatic1111 sd-webui"
 authors = [
     {name = "dowon", email = "ks2515@naver.com"},
@@ -14,7 +14,7 @@ repository = "https://github.com/Bing-su/sd-webui-tunnels"
 
 [tool.isort]
 profile = "black"
-known_first_party = ["modules", "launch"]
+known_first_party = ["modules", "launch", "discord_webhook"]
 
 [tool.ruff]
 select = ["A", "B", "C4", "E", "F", "I001", "N", "PT", "UP", "W"]
@@ -22,4 +22,4 @@ ignore = ["B008", "B905", "E501"]
 unfixable = ["F401"]
 
 [tool.ruff.isort]
-known-first-party = ["modules", "launch"]
+known-first-party = ["modules", "launch", "discord_webhook"]
