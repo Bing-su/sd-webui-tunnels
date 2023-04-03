@@ -20,6 +20,16 @@ The feature of `remote.moe` is that as long as the same ssh key is used, the sam
 
 The ssh keys for `localhost.run` and `remote.moe` are created with the name `id_rsa` in the script's root folder. However, if there is a problem with the write permission, it is created in a temporary folder instead, so a different url is created each time.
 
+### [jprq](https://github.com/azimjohn/jprq)
+
+add `--jprq "YOUR_JPRQ_TOKEN"` to commandline options.
+
+You can get a token [here](https://jprq.io/auth).
+
+### [bore](https://github.com/ekzhang/bore)
+
+add `--bore` to commandline options.
+
 -----
 ### Discord webhook
 
