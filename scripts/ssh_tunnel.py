@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import atexit
 import re
-import shlex
 import subprocess
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -18,8 +17,18 @@ remotemoe_pattern = re.compile(r"(?P<url>https?://\S+\.remote\.moe)")
 
 def gen_key(path: str | Path) -> None:
     path = Path(path)
-    arg_string = f'ssh-keygen -t rsa -b 4096 -N "" -q -f {path.as_posix()}'
-    args = shlex.split(arg_string)
+    args = [
+        "ssh-keygen",
+        "-t",
+        "rsa",
+        "-b",
+        "4096",
+        "-q",
+        "-f",
+        path.as_posix(),
+        "-N",
+        "",
+    ]
     subprocess.run(args, check=True)
     path.chmod(0o600)
 
@@ -40,8 +49,16 @@ def ssh_tunnel(host: str = LOCALHOST_RUN) -> str:
 
     port = cmd_opts.port if cmd_opts.port else 7860
 
-    arg_string = f"ssh -R 80:127.0.0.1:{port} -o StrictHostKeyChecking=no -i {ssh_path.as_posix()} {host}"
-    args = shlex.split(arg_string)
+    args = [
+        "ssh",
+        "-R",
+        f"80:127.0.0.1:{port}",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "-i",
+        ssh_path.as_posix(),
+        host,
+    ]
 
     tunnel = subprocess.Popen(
         args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding="utf-8"
