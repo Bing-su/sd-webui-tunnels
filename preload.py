@@ -33,5 +33,11 @@ def preload(parser: argparse.ArgumentParser):
     )
 
     parser.add_argument(
+        "--bore_url",
+        type=str,
+        help="custom bore url. url without 'http://' and (optional) port. example: myboreserver.com or myboreserver.com:12345",
+    )
+
+    parser.add_argument(
         "--tunnel-webhook", type=str, help="discord webhook to send tunnel url to"
     )

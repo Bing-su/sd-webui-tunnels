@@ -30,6 +30,8 @@ You can get a token [here](https://jprq.io/auth).
 
 add `--bore` to commandline options.
 
+add `--bore_url "URL"` for custom bore url. url without 'http://' and (optional) port. example: myboreserver.com or myboreserver.com:12345
+
 -----
 ### Discord webhook
 
