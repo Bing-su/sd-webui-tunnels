@@ -32,6 +32,12 @@ add `--bore` to commandline options.
 
 add `--bore_url "URL"` for custom bore url. url without 'http://' and (optional) port. example: myboreserver.com or myboreserver.com:12345
 
+### googleusercontent
+
+add `--googleusercontent` to commandline options. It must be used with `--no-gradio-queue`, otherwise it will not work.
+
+If not in google colab, it will be ignored.
+
 -----
 ### Discord webhook
 

@@ -39,5 +39,11 @@ def preload(parser: argparse.ArgumentParser):
     )
 
     parser.add_argument(
+        "--googleusercontent",
+        action="store_true",
+        help="use googleusercontent, only available in the google colab. must be used with --no-gradio-queue",
+    )
+
+    parser.add_argument(
         "--tunnel-webhook", type=str, help="discord webhook to send tunnel url to"
     )
