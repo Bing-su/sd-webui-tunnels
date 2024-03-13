@@ -3,7 +3,6 @@ import os
 from discord_webhook import send_to_discord
 from modules.shared import cmd_opts
 
-
 is_colab = "COLAB_RELEASE_TAG" in os.environ or "COLAB_BACKEND_VERSION" in os.environ
 
 if is_colab and cmd_opts.googleusercontent:
